@@ -11,7 +11,7 @@
 
     <script type="module">
             import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-            import { messaging } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-messaging-compat.js";
+            import { getMessaging, getToken,onMessage} from "https://www.gstatic.com/firebasejs/10.7.0/firebase-messaging.js";
             const firebaseConfig = {
             apiKey: "AIzaSyBIaNsuxR_n-rmEq5VYyA7eRoLX6IlnF50",
             authDomain: "notification-4e5f9.firebaseapp.com",
@@ -21,20 +21,20 @@
             appId: "1:419671086499:web:0192bef2ae77886f2c7616"
             };
 
-
             const app = initializeApp(firebaseConfig);
 
-            const mess = messaging(); 
+            const mess = getMessaging();
+
 
             //generer un token : 
-            mess.getToken({vapidKey: "BOQ44aRU3LmnMxUOZnmIQcCVsrLTV-AKFOwaLfc4qD0CUK6sCJjsud9GUMRM7ZED9jnDcMlsssPn"});
+            getToken(mess, {vapidKey: "BOQ44aRU3LmnMxUOZnmIQcCVsrLTV-AKFOwaLfc4qD0CUK6sCJjsud9GUMRM7ZED9jnDcMlsssPn"});
 
-            mess.onMessage((payload) => {
+            /*onMessage(mess,(payload) => {
                 console.log("Message reçu:", payload);
 
                 let message_affichage = document.getElementById("message-affichage");
                 message_affichage.textContent = JSON.stringify(payload,null,2);
-            });
+            });*/
     </script>
     
 </body>
